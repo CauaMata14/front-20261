@@ -133,7 +133,7 @@ body {
 }
 
 /* Mobile First - Responsividade */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .sidebar {
     display: none;
   }
@@ -148,10 +148,11 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .content-area {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .sidebar {
     width: 280px;
   }
