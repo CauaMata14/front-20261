@@ -5,8 +5,72 @@
     <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aluno Online</title>
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body>
+  <body class="app-container">
+    <!-- Menu lateral (Sidebar) -->
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <h1>Aluno Online</h1>
+      </header>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="#">Boletos</a></li>
+          <li><a href="#">Notas</a></li>
+          <li><a href="#">Faltas</a></li>
+          <li><a href="#">Requerimentos</a></li>
+          <li><a href="#">Validação</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Área principal da página -->
+    <main class="main-content">
+      <!-- Barra superior (Topbar) -->
+      <header class="topbar">
+        <section class="user-greeting">
+          <span>Olá, Aluno!</span>
+          <p class="welcome-message">Bem-vindo ao portal do aluno</p>
+        </section>
+        <figure class="user-avatar">
+          <img src="/avatar.svg" alt="Avatar do usuário" />
+        </figure>
+      </header>
+
+      <!-- Conteúdo principal -->
+      <section class="content-area">
+        <!-- Mural de Avisos -->
+        <article class="card">
+          <h2>Mural de Avisos</h2>
+          <ul>
+            <li>Palestra: IA na Educação</li>
+            <li>Escolha da trilha</li>
+            <li>Boleto vencido!</li>
+          </ul>
+        </article>
+
+        <!-- Calendário Acadêmico -->
+        <article class="card">
+          <h2>Calendário Acadêmico</h2>
+          <ul>
+            <li>12/03 - Solicitação de trancamento</li>
+            <li>18/04 - Avaliação A1</li>
+            <li>25/05 - Simulado Enade</li>
+          </ul>
+        </article>
+
+        <!-- Minhas Disciplinas -->
+        <article class="card">
+          <h2>Minhas Disciplinas</h2>
+          <ul>
+            <li>Construção de Frontend - JB5</li>
+            <li>Banco de Dados - CC3</li>
+            <li>Algoritmos - AA1</li>
+          </ul>
+        </article>
+      </section>
+    </main>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
