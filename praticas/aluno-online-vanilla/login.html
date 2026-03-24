@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Aluno Online</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-container">
+      <section class="login-card">
+        <header class="login-header">
+          <img src="/learn.svg" alt="Ícone de aprendizado" class="login-icon" />
+          <h1>Aluno Online</h1>
+          <p>Entre com sua conta</p>
+        </header>
+
+        <form class="login-form" id="login-form">
+          <fieldset class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Digite seu email"
+            />
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Digite sua senha"
+            />
+          </fieldset>
+
+          <button type="submit" class="login-button">Entrar</button>
+        </form>
+
+        <section class="error-messages" id="error-messages" aria-live="polite"></section>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -5,6 +5,7 @@ export default {
     rollupOptions: {
       input: {
         main: "index.html",
+        login: "login.html",
       },
     },
   },
