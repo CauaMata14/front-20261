@@ -7,51 +7,60 @@ import './style.css'
 
 // Seleciona elementos do DOM
 const loginForm = document.getElementById('login-form')
-const errorMessagesContainer = document.getElementById('error-messages')
+const emailInput = document.getElementById('email')
+const senhaInput = document.getElementById('senha')
+const emailError = document.getElementById('email-error')
+const senhaError = document.getElementById('senha-error')
 
 /**
- * Exibe mensagens de erro na interface
- * @param {string[]} errors - Array de mensagens de erro
+ * Exibe mensagem de erro para um campo específico
+ * @param {HTMLElement} errorElement - Elemento span de erro
+ * @param {string} message - Mensagem de erro
  */
-function displayErrors(errors) {
-  // Limpa mensagens anteriores
-  errorMessagesContainer.innerHTML = ''
-
-  if (errors.length === 0) {
-    errorMessagesContainer.classList.remove('has-errors')
-    return
-  }
-
-  // Cria lista de erros
-  const ul = document.createElement('ul')
-  errors.forEach((error) => {
-    const li = document.createElement('li')
-    li.textContent = error
-    ul.appendChild(li)
-  })
-
-  errorMessagesContainer.appendChild(ul)
-  errorMessagesContainer.classList.add('has-errors')
+function showFieldError(errorElement, message) {
+  errorElement.textContent = message
+  errorElement.classList.add('has-error')
 }
 
 /**
- * Valida os campos do formulário
- * @param {string} email - Valor do campo email
- * @param {string} senha - Valor do campo senha
- * @returns {string[]} - Array de mensagens de erro
+ * Limpa mensagem de erro de um campo
+ * @param {HTMLElement} errorElement - Elemento span de erro
  */
-function validateForm(email, senha) {
-  const errors = []
+function clearFieldError(errorElement) {
+  errorElement.textContent = ''
+  errorElement.classList.remove('has-error')
+}
 
-  if (!email || email.trim() === '') {
-    errors.push('O campo email é obrigatório')
+/**
+ * Limpa todas as mensagens de erro
+ */
+function clearAllErrors() {
+  clearFieldError(emailError)
+  clearFieldError(senhaError)
+}
+
+/**
+ * Valida o formulário e retorna se é válido
+ * @returns {boolean} - True se o formulário é válido
+ */
+function validateForm() {
+  let isValid = true
+  const email = emailInput.value.trim()
+  const senha = senhaInput.value.trim()
+
+  // Valida email
+  if (email === '') {
+    showFieldError(emailError, 'O campo de email é obrigatório.')
+    isValid = false
   }
 
-  if (!senha || senha.trim() === '') {
-    errors.push('O campo senha é obrigatório')
+  // Valida senha
+  if (senha === '') {
+    showFieldError(senhaError, 'O campo de senha é obrigatório.')
+    isValid = false
   }
 
-  return errors
+  return isValid
 }
 
 /**
@@ -62,23 +71,11 @@ function handleSubmit(event) {
   // Previne o comportamento padrão (recarregar página)
   event.preventDefault()
 
-  // Obtém valores dos campos
-  const emailInput = document.getElementById('email')
-  const senhaInput = document.getElementById('senha')
+  // Limpa erros anteriores
+  clearAllErrors()
 
-  const email = emailInput.value
-  const senha = senhaInput.value
-
-  // Valida os campos
-  const errors = validateForm(email, senha)
-
-  // Exibe erros ou prossegue
-  if (errors.length > 0) {
-    displayErrors(errors)
-  } else {
-    // Limpa mensagens de erro
-    displayErrors([])
-
+  // Valida e prossegue se válido
+  if (validateForm()) {
     // Redireciona para a Dashboard
     window.location.href = '/'
   }
@@ -89,10 +86,11 @@ if (loginForm) {
   loginForm.addEventListener('submit', handleSubmit)
 
   // Limpa mensagens de erro quando o usuário começa a digitar
-  const inputs = loginForm.querySelectorAll('input')
-  inputs.forEach((input) => {
-    input.addEventListener('input', () => {
-      displayErrors([])
-    })
+  emailInput.addEventListener('input', () => {
+    clearFieldError(emailError)
+  })
+
+  senhaInput.addEventListener('input', () => {
+    clearFieldError(senhaError)
   })
 }

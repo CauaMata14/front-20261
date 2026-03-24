@@ -271,10 +271,14 @@ body {
   padding: 0;
 }
 
-.error-messages li {
-  margin-bottom: 0.25rem;
+/* Field error messages - inline */
+.field-error {
+  display: none;
+  color: #c33;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }
 
-.error-messages li::before {
-  content: "⚠ ";
+.field-error.has-error {
+  display: block;
 }
