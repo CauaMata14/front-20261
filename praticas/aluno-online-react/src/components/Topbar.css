@@ -1,0 +1,33 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-greeting span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+}
+
+.welcome-message {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .user-greeting span {
+    margin-bottom: 0.25rem;
+  }
+}

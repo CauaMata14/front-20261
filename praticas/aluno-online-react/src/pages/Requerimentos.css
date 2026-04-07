@@ -1,0 +1,89 @@
+.requerimentos-container {
+  width: 100%;
+}
+
+.requerimentos-header {
+  margin-bottom: 1.5rem;
+}
+
+.requerimentos-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #303030;
+  margin-bottom: 0.5rem;
+}
+
+.requerimentos-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.requerimentos-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.requerimentos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requerimentos-table thead {
+  background-color: #e9e9e9;
+}
+
+.requerimentos-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #303030;
+  border-bottom: 1px solid #ddd;
+}
+
+.requerimentos-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  color: #303030;
+}
+
+.requerimentos-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.situacao-badge {
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.situacao-badge.deferido {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+}
+
+.situacao-badge.indeferido {
+  color: #c33;
+  background-color: #fee;
+}
+
+@media (max-width: 640px) {
+  .requerimentos-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .requerimentos-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .requerimentos-table th,
+  .requerimentos-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
