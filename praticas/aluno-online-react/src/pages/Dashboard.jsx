@@ -1,41 +1,32 @@
 import Layout from '../components/Layout'
-import './Dashboard.css'
+import Card from '../components/Card'
 
 function Dashboard() {
   return (
-    <Layout>
-      <article className="card">
-        <header className="card-header">
-          <h2>Mural de Avisos</h2>
-        </header>
-        <ul className="card-content">
+    <Layout titulo="Dashboard" subtitulo="Bem-vindo ao portal do aluno">
+      <Card title="Mural de Avisos">
+        <ul>
           <li>Inscrição para o projeto de extensão</li>
           <li>Eleição para representante de turma</li>
         </ul>
-      </article>
+      </Card>
 
-      <article className="card">
-        <header className="card-header">
-          <h2>Calendário Acadêmico</h2>
-        </header>
-        <ul className="card-content">
+      <Card title="Calendário Acadêmico">
+        <ul>
           <li>23/02 - Início do período letivo 2026-1</li>
           <li>25/04 - Prazo final para aplicação da P1</li>
           <li>23/06 - Prazo final para aplicação da P2</li>
           <li>04/07 - Fim do período letivo 2026-1</li>
         </ul>
-      </article>
+      </Card>
 
-      <article className="card">
-        <header className="card-header">
-          <h2>Minhas Disciplinas</h2>
-        </header>
-        <ul className="card-content">
+      <Card title="Minhas Disciplinas">
+        <ul>
           <li>BI e Data Warehousing</li>
           <li>Construção de Frontend</li>
           <li>Manutenção de Software e Devops</li>
         </ul>
-      </article>
+      </Card>
     </Layout>
   )
 }
