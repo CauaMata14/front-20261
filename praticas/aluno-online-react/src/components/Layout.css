@@ -11,9 +11,27 @@
 
 .content-area {
   padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
+}
+
+.page-header {
+  margin-bottom: 0.5rem;
+}
+
+.page-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #303030;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #303030;
+  margin: 0;
 }
 
 @media (max-width: 767px) {
@@ -24,6 +42,11 @@
 
 @media (min-width: 768px) {
   .content-area {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .page-header {
+    grid-column: 1 / -1;
   }
 }
