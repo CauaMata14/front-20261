@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fundo: #e9e9e9;
+  --color-texto: #303030;
+  --color-azul: #4a90d9;
+  --color-azul-escuro: #357abd;
+  --color-erro: #c33;
+  --color-erro-bg: #fee;
+}
