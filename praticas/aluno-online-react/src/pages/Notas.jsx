@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Tabela from '../components/Tabela'
 
 function Notas() {
@@ -22,11 +21,16 @@ function Notas() {
   const colunas = ['Disciplina', 'A1', 'A2', 'A3', 'Menção']
 
   return (
-    <Layout titulo="Minhas Notas" subtitulo="Histórico de Notas por Semestre">
+    <>
+      <header className="page-header">
+        <h1>Minhas Notas</h1>
+        <h2>Histórico de Notas por Semestre</h2>
+      </header>
+      
       <Tabela titulo="2026.1" colunas={colunas} dados={semestre20261} />
       <Tabela titulo="2025.2" colunas={colunas} dados={semestre20252} />
       <Tabela titulo="2025.1" colunas={colunas} dados={semestre20251} />
-    </Layout>
+    </>
   )
 }
 

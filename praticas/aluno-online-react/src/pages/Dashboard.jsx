@@ -1,9 +1,13 @@
-import Layout from '../components/Layout'
 import Card from '../components/Card'
 
 function Dashboard() {
   return (
-    <Layout titulo="Dashboard" subtitulo="Bem-vindo ao portal do aluno">
+    <>
+      <header className="page-header">
+        <h1>Dashboard</h1>
+        <h2>Bem-vindo ao portal do aluno</h2>
+      </header>
+      
       <Card title="Mural de Avisos">
         <ul>
           <li>Inscrição para o projeto de extensão</li>
@@ -27,7 +31,7 @@ function Dashboard() {
           <li>Manutenção de Software e Devops</li>
         </ul>
       </Card>
-    </Layout>
+    </>
   )
 }
 

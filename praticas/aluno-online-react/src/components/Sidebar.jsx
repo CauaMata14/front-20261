@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './Sidebar.css'
 
 function Sidebar() {
@@ -9,11 +10,46 @@ function Sidebar() {
       </header>
       <nav className="sidebar-nav">
         <ul>
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/notas">Notas</a></li>
-          <li><a href="/faltas">Faltas</a></li>
-          <li><a href="/boletos">Boletos</a></li>
-          <li><a href="/requerimentos">Requerimentos</a></li>
+          <li>
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Dashboard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/notas" 
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Notas
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/faltas" 
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Faltas
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/boletos" 
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Boletos
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/requerimentos" 
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Requerimentos
+            </NavLink>
+          </li>
           <li><a href="/login">Sair</a></li>
         </ul>
       </nav>
