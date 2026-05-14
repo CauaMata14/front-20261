@@ -1,5 +1,5 @@
 import './Topbar.css'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../contexts/useAuth'
 
 function Topbar() {
   const { usuario } = useAuth()
