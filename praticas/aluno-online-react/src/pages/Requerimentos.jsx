@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Tabela from '../components/Tabela'
 
 function Requerimentos() {
@@ -13,9 +12,14 @@ function Requerimentos() {
   const colunas = ['Tipo de Requerimento', 'Data de Solicitação', 'Situação']
 
   return (
-    <Layout titulo="Meus Requerimentos" subtitulo="Faça solicitações online para a secretaria">
+    <>
+      <header className="page-header">
+        <h1>Meus Requerimentos</h1>
+        <h2>Faça solicitações online para a secretaria</h2>
+      </header>
+      
       <Tabela colunas={colunas} dados={requerimentos} />
-    </Layout>
+    </>
   )
 }
 
