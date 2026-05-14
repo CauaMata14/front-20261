@@ -12,17 +12,12 @@ function App() {
 
   return (
     <Routes>
-      {!autenticado ? (
-        <Route path="/login" element={<Login />} />
-      ) : (
-        <>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/faltas" element={<Faltas />} />
-          <Route path="/notas" element={<Notas />} />
-          <Route path="/boletos" element={<Boletos />} />
-          <Route path="/requerimentos" element={<Requerimentos />} />
-        </>
-      )}
+      <Route path="/login" element={!autenticado ? <Login /> : <Navigate to="/" />} />
+      <Route path="/" element={autenticado ? <Dashboard /> : <Navigate to="/login" />} />
+      <Route path="/faltas" element={autenticado ? <Faltas /> : <Navigate to="/login" />} />
+      <Route path="/notas" element={autenticado ? <Notas /> : <Navigate to="/login" />} />
+      <Route path="/boletos" element={autenticado ? <Boletos /> : <Navigate to="/login" />} />
+      <Route path="/requerimentos" element={autenticado ? <Requerimentos /> : <Navigate to="/login" />} />
       <Route path="*" element={<Navigate to={autenticado ? "/" : "/login"} />} />
     </Routes>
   )
