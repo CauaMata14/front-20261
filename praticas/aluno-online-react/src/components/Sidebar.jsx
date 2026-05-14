@@ -1,7 +1,14 @@
-import { NavLink } from 'react-router-dom'
 import './Sidebar.css'
+import { NavLink } from 'react-router-dom'
+import { useAuth } from '../contexts/useAuth'
 
 function Sidebar() {
+  const { logout } = useAuth()
+
+  const handleLogout = () => {
+    logout()
+  }
+
   return (
     <aside className="sidebar">
       <header className="sidebar-header">
@@ -10,47 +17,12 @@ function Sidebar() {
       </header>
       <nav className="sidebar-nav">
         <ul>
-          <li>
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/notas" 
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Notas
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/faltas" 
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Faltas
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/boletos" 
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Boletos
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/requerimentos" 
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Requerimentos
-            </NavLink>
-          </li>
-          <li><a href="/login">Sair</a></li>
+          <li><NavLink to="/">Dashboard</NavLink></li>
+          <li><NavLink to="/notas">Notas</NavLink></li>
+          <li><NavLink to="/faltas">Faltas</NavLink></li>
+          <li><NavLink to="/boletos">Boletos</NavLink></li>
+          <li><NavLink to="/requerimentos">Requerimentos</NavLink></li>
+          <li><a href="#" onClick={handleLogout}>Sair</a></li>
         </ul>
       </nav>
     </aside>
