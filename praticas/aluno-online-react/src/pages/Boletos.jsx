@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Tabela from '../components/Tabela'
 
 function Boletos() {
@@ -22,9 +21,14 @@ function Boletos() {
   const colunas = ['Vencimento', 'Valor R$', 'Situação']
 
   return (
-    <Layout titulo="Meus Boletos" subtitulo="Histórico de Pagamentos">
+    <>
+      <header className="page-header">
+        <h1>Meus Boletos</h1>
+        <h2>Histórico de Pagamentos</h2>
+      </header>
+      
       <Tabela colunas={colunas} dados={boletos} />
-    </Layout>
+    </>
   )
 }
 
