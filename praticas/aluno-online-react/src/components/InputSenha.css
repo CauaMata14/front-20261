@@ -1,0 +1,27 @@
+p {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0 0;
+  min-height: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: #303030;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1a6dff;
+}

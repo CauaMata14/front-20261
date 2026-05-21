@@ -1,0 +1,95 @@
+.faltas-container {
+  width: 100%;
+}
+
+.faltas-header {
+  margin-bottom: 1.5rem;
+}
+
+.faltas-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #303030;
+  margin-bottom: 0.5rem;
+}
+
+.faltas-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.semestre-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.semestre-header {
+  background-color: #e9e9e9;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.semestre-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #303030;
+  margin: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.faltas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.faltas-table thead {
+  background-color: #f5f5f5;
+}
+
+.faltas-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #303030;
+  border-bottom: 1px solid #ddd;
+}
+
+.faltas-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  color: #303030;
+}
+
+.faltas-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.faltas-table th:nth-child(2),
+.faltas-table th:nth-child(3),
+.faltas-table td:nth-child(2),
+.faltas-table td:nth-child(3) {
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .faltas-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .faltas-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .faltas-table th,
+  .faltas-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
