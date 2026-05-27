@@ -1,10 +1,13 @@
 import './Topbar.css'
+import { useAuth } from '../contexts/useAuth'
 
 function Topbar() {
+  const { usuario } = useAuth()
+
   return (
     <header className="topbar">
       <section className="user-greeting">
-        <span>Olá, Aluno!</span>
+        <span>Olá, {usuario?.nome || 'Aluno'}!</span>
         <p className="welcome-message">Bem-vindo ao portal do aluno</p>
       </section>
       <figure className="user-avatar">
