@@ -1,4 +1,5 @@
 import Tabela from '../components/Tabela'
+import './Requerimentos.css'
 
 function Requerimentos() {
   const requerimentos = [

@@ -1,4 +1,5 @@
 import Tabela from '../components/Tabela'
+import './Notas.css'
 
 function Notas() {
   const semestre20261 = [

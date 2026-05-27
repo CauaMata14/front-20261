@@ -1,4 +1,5 @@
 import Tabela from '../components/Tabela'
+import './Boletos.css'
 
 function Boletos() {
   const boletos = [
