@@ -1,24 +1,84 @@
+import { useEffect, useState } from 'react'
 import Tabela from '../components/Tabela'
+import RequerimentoForm from '../components/RequerimentoForm'
+import {
+  cadastrarRequerimento,
+  listarRequerimentos,
+} from '../services/requerimentoService'
+import './Requerimentos.css'
 
 function Requerimentos() {
-  const requerimentos = [
-    { tipo: 'Revisão de Menção', data: '15/12/2025', situacao: 'Indeferido' },
-    { tipo: 'Dispensa de Disciplina', data: '12/06/2025', situacao: 'Indeferido' },
-    { tipo: 'Trancamento de Matrícula', data: '05/01/2024', situacao: 'Deferido' },
-    { tipo: 'Mudança de Turno', data: '10/10/2023', situacao: 'Deferido' },
-    { tipo: 'Renovação de Matrícula', data: '20/02/2023', situacao: 'Deferido' }
-  ]
+  const [requerimentos, setRequerimentos] = useState([])
+  const [carregando, setCarregando] = useState(true)
+  const [erro, setErro] = useState('')
 
-  const colunas = ['Tipo de Requerimento', 'Data de Solicitação', 'Situação']
+  useEffect(() => {
+    let paginaAtiva = true
+
+    async function carregarRequerimentos() {
+      try {
+        const dados = await listarRequerimentos()
+
+        if (paginaAtiva) {
+          setRequerimentos(dados)
+          setErro('')
+        }
+      } catch (error) {
+        if (paginaAtiva) {
+          setErro(error.message)
+        }
+      } finally {
+        if (paginaAtiva) {
+          setCarregando(false)
+        }
+      }
+    }
+
+    carregarRequerimentos()
+
+    return () => {
+      paginaAtiva = false
+    }
+  }, [])
+
+  async function handleCadastrarRequerimento(requerimento) {
+    try {
+      const requerimentoCadastrado = await cadastrarRequerimento(requerimento)
+      setRequerimentos((listaAtual) => [requerimentoCadastrado, ...listaAtual])
+      setErro('')
+    } catch (error) {
+      setErro(error.message)
+      throw error
+    }
+  }
+
+  const colunas = ['Tipo de Requerimento', 'Data de Solicitacao', 'Situacao']
+  const dadosTabela = requerimentos.map(({ tipo, data, situacao }) => ({
+    tipo,
+    data,
+    situacao,
+  }))
 
   return (
     <>
       <header className="page-header">
         <h1>Meus Requerimentos</h1>
-        <h2>Faça solicitações online para a secretaria</h2>
+        <h2>Faca solicitacoes online para a secretaria</h2>
       </header>
-      
-      <Tabela colunas={colunas} dados={requerimentos} />
+
+      <section className="requerimentos-layout">
+        <RequerimentoForm onCadastrar={handleCadastrarRequerimento} />
+
+        <div className="requerimentos-lista">
+          {erro && <p className="requerimentos-alerta">{erro}</p>}
+
+          {carregando ? (
+            <p className="requerimentos-status">Carregando requerimentos...</p>
+          ) : (
+            <Tabela titulo="Solicitacoes cadastradas" colunas={colunas} dados={dadosTabela} />
+          )}
+        </div>
+      </section>
     </>
   )
 }
