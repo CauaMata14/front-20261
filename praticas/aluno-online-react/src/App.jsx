@@ -7,6 +7,7 @@ import Boletos from './pages/Boletos'
 import Requerimentos from './pages/Requerimentos'
 import Login from './pages/Login'
 import Layout from './components/Layout'
+import RequerimentoForm from './forms/RequerimentoForm'
 
 function App() {
   const { autenticado } = useAuth()
@@ -20,6 +21,7 @@ function App() {
         <Route path="/notas" element={<Notas />} />
         <Route path="/boletos" element={<Boletos />} />
         <Route path="/requerimentos" element={<Requerimentos />} />
+        <Route path="/requerimentos/novo" element={<RequerimentoForm />} />
       </Route>
       <Route path="*" element={<Navigate to={autenticado ? "/" : "/login"} />} />
     </Routes>
