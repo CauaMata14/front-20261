@@ -1,0 +1,11 @@
+{
+  "requerimentos": [
+    {
+      "id": "1",
+      "tipo": "Revisao de Mencao",
+      "data": "15/12/2025",
+      "situacao": "Em analise",
+      "descricao": "Solicito revisao da mencao final da disciplina."
+    }
+  ]
+}

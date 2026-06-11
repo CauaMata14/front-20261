@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { cadastrarRequerimento } from '../services/requerimentoService'
 import './RequerimentoForm.css'
+
+function formatarData(data) {
+  return new Intl.DateTimeFormat('pt-BR').format(new Date(`${data}T00:00:00`))
+}
 
 function RequerimentoForm() {
   const navigate = useNavigate()
@@ -8,7 +13,7 @@ function RequerimentoForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors, isSubmitting }
   } = useForm({
     defaultValues: {
       tipo: '',
@@ -17,9 +22,16 @@ function RequerimentoForm() {
     }
   })
 
-  const salvarRequerimento = (dados) => {
-    console.log('Novo requerimento:', dados)
+  const salvarRequerimento = async (dados) => {
+    await cadastrarRequerimento({
+      tipo: dados.tipo,
+      descricao: dados.descricao.trim(),
+      data: formatarData(dados.data),
+      situacao: 'Em analise'
+    })
+
     reset()
+    navigate('/requerimentos')
   }
 
   return (
@@ -73,8 +85,8 @@ function RequerimentoForm() {
           <button type="button" className="btn btn-secondary" onClick={() => navigate('/requerimentos')}>
             Cancelar
           </button>
-          <button type="submit" className="btn btn-primary">
-            Salvar
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? 'Salvando...' : 'Salvar'}
           </button>
         </div>
       </form>
