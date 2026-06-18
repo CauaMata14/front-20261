@@ -1,0 +1,47 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Cauã Mata",
+      "email": "caua.mata@iesb.edu.br",
+      "senha": "123456"
+    }
+  ],
+  "requerimentos": [
+    {
+      "id": 1,
+      "tipo": "Revisão de Menção",
+      "descricao": "Solicito revisão da menção lançada no semestre.",
+      "data": "2025-12-15",
+      "situacao": "Indeferido"
+    },
+    {
+      "id": 2,
+      "tipo": "Dispensa de Disciplina",
+      "descricao": "Solicito dispensa por aproveitamento de estudos.",
+      "data": "2025-06-12",
+      "situacao": "Indeferido"
+    },
+    {
+      "id": 3,
+      "tipo": "Trancamento de Matrícula",
+      "descricao": "Solicito trancamento temporário da matrícula.",
+      "data": "2024-01-05",
+      "situacao": "Deferido"
+    },
+    {
+      "id": 4,
+      "tipo": "Mudança de Turno",
+      "descricao": "Solicito mudança para o turno noturno.",
+      "data": "2023-10-10",
+      "situacao": "Deferido"
+    },
+    {
+      "id": 5,
+      "tipo": "Renovação de Matrícula",
+      "descricao": "Solicito renovação da matrícula para o próximo período.",
+      "data": "2023-02-20",
+      "situacao": "Deferido"
+    }
+  ]
+}
