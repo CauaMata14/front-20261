@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { cadastrarRequerimento } from '../services/requerimentosService'
 import './RequerimentoForm.css'
 
 function RequerimentoForm() {
@@ -8,7 +9,7 @@ function RequerimentoForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors, isSubmitting }
   } = useForm({
     defaultValues: {
       tipo: '',
@@ -17,9 +18,19 @@ function RequerimentoForm() {
     }
   })
 
-  const salvarRequerimento = (dados) => {
-    console.log('Novo requerimento:', dados)
-    reset()
+  const salvarRequerimento = async (dados) => {
+    try {
+      await cadastrarRequerimento({
+        ...dados,
+        descricao: dados.descricao.trim()
+      })
+      reset()
+      navigate('/requerimentos')
+    } catch (error) {
+      if (error.status !== 401) {
+        alert(error.message)
+      }
+    }
   }
 
   return (
@@ -54,7 +65,7 @@ function RequerimentoForm() {
             id="descricao"
             rows="6"
             {...register('descricao', {
-              required: 'Descrição é obrigatório',
+              required: 'Descrição é obrigatória',
               minLength: {
                 value: 10,
                 message: 'Descrição deve ter no mínimo 10 caracteres'
@@ -73,8 +84,8 @@ function RequerimentoForm() {
           <button type="button" className="btn btn-secondary" onClick={() => navigate('/requerimentos')}>
             Cancelar
           </button>
-          <button type="submit" className="btn btn-primary">
-            Salvar
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? 'Salvando...' : 'Salvar'}
           </button>
         </div>
       </form>

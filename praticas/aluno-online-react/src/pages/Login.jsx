@@ -6,14 +6,24 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulação de login - em produção, chamaria API
-    login({ email, nome: "Cauã Mata" });
-    navigate("/");
+    setErro("");
+    setCarregando(true);
+
+    try {
+      await login(email, senha);
+      navigate("/");
+    } catch (error) {
+      setErro(error.message);
+    } finally {
+      setCarregando(false);
+    }
   };
 
   return (
@@ -41,7 +51,10 @@ function Login() {
               required
             />
           </div>
-          <button type="submit">Entrar</button>
+          {erro && <p className="login-error">{erro}</p>}
+          <button type="submit" disabled={carregando}>
+            {carregando ? "Entrando..." : "Entrar"}
+          </button>
         </form>
       </div>
     </div>

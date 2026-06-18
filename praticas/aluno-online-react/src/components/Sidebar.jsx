@@ -5,7 +5,8 @@ import { useAuth } from '../contexts/useAuth'
 function Sidebar() {
   const { logout } = useAuth()
 
-  const handleLogout = () => {
+  const handleLogout = (event) => {
+    event.preventDefault()
     logout()
   }
 

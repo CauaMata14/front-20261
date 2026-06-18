@@ -25,6 +25,15 @@
   background-color: #0052cc;
 }
 
+.requerimentos-error {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  color: #9b1c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+}
+
 .tabela-card {
   grid-column: 1 / -1;
 }

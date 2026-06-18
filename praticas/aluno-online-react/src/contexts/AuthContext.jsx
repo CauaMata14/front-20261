@@ -1,22 +1,59 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  autenticar,
+  limparSessao,
+  obterSessaoSalva,
+  obterToken,
+} from "../services/authService";
 
 const AuthContext = createContext();
 
-// Provedor do contexto
 function AuthProvider({ children }) {
-  const [autenticado, setAutenticado] = useState(false);
-  const [usuario, setUsuario] = useState(null);
+  const sessaoInicial = useMemo(() => obterSessaoSalva(), []);
+  const [autenticado, setAutenticado] = useState(Boolean(sessaoInicial?.token));
+  const [usuario, setUsuario] = useState(sessaoInicial?.usuario || null);
 
-  const login = (dadosUsuario) => {
-    // Simulação de login - em produção, chamaria API
-    setUsuario(dadosUsuario);
+  const encerrarSessao = useCallback(() => {
+    limparSessao();
+    setUsuario(null);
+    setAutenticado(false);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("auth:unauthorized", encerrarSessao);
+
+    return () => {
+      window.removeEventListener("auth:unauthorized", encerrarSessao);
+    };
+  }, [encerrarSessao]);
+
+  useEffect(() => {
+    if (!autenticado) {
+      return undefined;
+    }
+
+    const validarTokenPersistido = () => {
+      if (!obterToken()) {
+        encerrarSessao();
+      }
+    };
+
+    document.addEventListener("click", validarTokenPersistido);
+
+    return () => {
+      document.removeEventListener("click", validarTokenPersistido);
+    };
+  }, [autenticado, encerrarSessao]);
+
+  const login = async (email, senha) => {
+    const sessao = await autenticar(email, senha);
+    setUsuario(sessao.usuario);
     setAutenticado(true);
+    return sessao.usuario;
   };
 
   const logout = () => {
-    // Limpa o estado de autenticação
-    setUsuario(null);
-    setAutenticado(false);
+    encerrarSessao();
   };
 
   return (
